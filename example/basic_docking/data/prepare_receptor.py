@@ -21,10 +21,10 @@ if __name__ == '__main__':
 
     def usage():
         "Print helpful, accurate usage statement to stdout."
-        print "Usage: prepare_receptor.py -r filename"
+        print("Usage: prepare_receptor.py -r filename")
         print
-        print "    Description of command..."
-        print "         -r   receptor_filename"
+        print("    Description of command...")
+        print("         -r   receptor_filename")
         print "    Optional parameters:"
         print "        [-v]  verbose output (default is minimal output)"
         print "        [-o pdbqs_filename] (default is molecule_name.pdbqs)"
@@ -63,7 +63,7 @@ if __name__ == '__main__':
         opt_list, args = getopt.getopt(sys.argv[1:], 'r:vo:A:Cp:GU:eM:')
 
     except getopt.GetoptError, msg:
-        print 'prepare_receptor.py: %s' %msg
+        print('prepare_receptor.py: %s' %msg)
         usage()
         sys.exit(2)
 
@@ -93,13 +93,13 @@ if __name__ == '__main__':
     for o, a in opt_list:
         if o in ('-r', '--r'):
             receptor_filename = a
-            if verbose: print 'set receptor_filename to ', a
+            if verbose: print('set receptor_filename to ', a)
         if o in ('-v', '--v'):
             verbose = True
-            if verbose: print 'set verbose to ', True
+            if verbose: print('set verbose to ', True)
         if o in ('-o', '--o'):
             outputfilename = a
-            if verbose: print 'set outputfilename to ', a
+            if verbose: print('set outputfilename to ', a)
         if o in ('-A', '--A'):
             repairs = a
             if verbose: print 'set repairs to ', a

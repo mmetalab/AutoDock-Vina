@@ -21,38 +21,38 @@ if __name__ == '__main__':
 
     def usage():
         "Print helpful, accurate usage statement to stdout."
-        print "Usage: prepare_ligand.py -l filename"
+        print("Usage: prepare_ligand.py -l filename")
         print
-        print "    Description of command..."
-        print "         -l     ligand_filename"
-        print "    Optional parameters:"
-        print "        [-v]    verbose output"
-        print "        [-o pdbq_filename] (output filename)"
-        print "        [-d]    dictionary to write types list and number of active torsions "
+        print("    Description of command...")
+        print ("         -l     ligand_filename")
+        print ("    Optional parameters:")
+        print ("        [-v]    verbose output")
+        print ("        [-o pdbq_filename] (output filename)")
+        print ("        [-d]    dictionary to write types list and number of active torsions ")
 
-        print "        [-A]    type(s) of repairs to make:\n\t\t bonds_hydrogens, bonds, hydrogens, ''"
-        print "        [-C]    preserve initial charges (do not add new charges)"
-        print "        [-p]    preserve input charges on atom type, eg -p Zn"
-        print "        [-K]    add Kollman charges"
-        print "        [-U]    cleanup type:\n\t\t nphs_lps, nphs, lps, '' "
-        print "        [-B]    type(s) of bonds to allow to rotate"
-        print "        [-R]    index for root"
-        print "        [-F]    check for and use largest non-bonded fragment (False)"
-        print "        [-M]    interactive (default is automatic)"
-        print "        [-I]    string of bonds to inactivate composed of "
-        print "                   of zero-based atom indices eg 5_13_2_10  "
-        print "                   will inactivate atoms[5]-atoms[13] bond "
-        print "                               and atoms[2]-atoms[10] bond "
-        print "                      (default is '')"
-        print "        [-Z]    inactivate all active torsions     "
-        print "                      (default is leave active)"
+        print ("        [-A]    type(s) of repairs to make:\n\t\t bonds_hydrogens, bonds, hydrogens, ''")
+        print ("        [-C]    preserve initial charges (do not add new charges)")
+        print ("        [-p]    preserve input charges on atom type, eg -p Zn")
+        print ("        [-K]    add Kollman charges")
+        print ("        [-U]    cleanup type:\n\t\t nphs_lps, nphs, lps, '' ")
+        print ("        [-B]    type(s) of bonds to allow to rotate")
+        print ("        [-R]    index for root")
+        print ("        [-F]    check for and use largest non-bonded fragment (False)")
+        print ("        [-M]    interactive (default is automatic)")
+        print ("        [-I]    string of bonds to inactivate composed of ")
+        print ("                   of zero-based atom indices eg 5_13_2_10  ")
+        print ("                   will inactivate atoms[5]-atoms[13] bond ")
+        print ("                               and atoms[2]-atoms[10] bond ")
+        print ("                      (default is '')")
+        print ("        [-Z]    inactivate all active torsions     ")
+        print ("                      (default is leave active)")
 
 
     # process command arguments
     try:
         opt_list, args = getopt.getopt(sys.argv[1:], 'l:vo:d:A:Cp:KU:B:R:MFI:Zh')
     except getopt.GetoptError, msg:
-        print 'prepare_ligand.py: %s' %msg
+        print ('prepare_ligand.py: %s' %msg)
         usage()
         sys.exit(2)
 
