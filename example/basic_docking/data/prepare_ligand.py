@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
     def usage():
         "Print helpful, accurate usage statement to stdout."
-        print("Usage: prepare_ligand.py -l filename")
-        print
-        print("    Description of command...")
+        print ("Usage: prepare_ligand.py -l filename")
+        print()
+        print ("    Description of command...")
         print ("         -l     ligand_filename")
         print ("    Optional parameters:")
         print ("        [-v]    verbose output")
@@ -93,72 +93,72 @@ if __name__ == '__main__':
         #print "o=", o, " a=", a
         if o in ('-l', '--l'):
             ligand_filename = a
-            if verbose: print 'set ligand_filename to ', a
+            if verbose: print ('set ligand_filename to ', a)
         if o in ('-v', '--v'):
             verbose = True
-            if verbose: print 'set verbose to ', True
+            if verbose: print ('set verbose to ', True)
         if o in ('-o', '--o'):
             outputfilename = a
-            if verbose: print 'set outputfilename to ', a
+            if verbose: print ('set outputfilename to ', a)
         if o in ('-d', '--d'):
             dict = a
-            if verbose: print 'set dict to ', a
+            if verbose: print ('set dict to ', a)
         if o in ('-A', '--A'):
             repairs = a
-            if verbose: print 'set repairs to ', a
+            if verbose: print ('set repairs to ', a)
         if o in ('-C', '--C'):
             charges_to_add = None
-            if verbose: print 'do not add charges'
+            if verbose: print ('do not add charges')
         if o in ('-p', '--p'):
             preserve_charge_types+=a
             preserve_charge_types+=','
-            if verbose: print 'preserve initial charges on ', preserve_charge_types
+            if verbose: print ('preserve initial charges on ', preserve_charge_types)
         if o in ('-K', '--K'):
             charges_to_add = 'Kollman'
-            if verbose: print 'add Kollman charges'
+            if verbose: print ('add Kollman charges')
         if o in ('-p', '--p'):
             preserve_charge_types+=a
             preserve_charge_types+=','
-            if verbose: print 'preserve initial charges on ', preserve_charge_types
+            if verbose: print ('preserve initial charges on ', preserve_charge_types)
         if o in ('-U', '--U'):
             cleanup  = a
-            if verbose: print 'set cleanup to merge ', a
+            if verbose: print ('set cleanup to merge ', a)
         if o in ('-B', '--B'):
             allowed_bonds = a
-            if verbose: print 'allow ', a, 'bonds set to rotate'
+            if verbose: print ('allow ', a, 'bonds set to rotate')
         if o in ('-R', '--R'):
             root = a
-            if verbose: print 'set root to ', root
+            if verbose: print ('set root to ', root)
         if o in ('-F', '--F'):
             check_for_fragments = True
-            if verbose: print 'set check_for_fragments to True'
+            if verbose: print ('set check_for_fragments to True')
         if o in ('-M', '--M'):
             mode = a
-            if verbose: print 'set mode to ', a
+            if verbose: print ('set mode to ', a)
         if o in ('-I', '--I'):
             bonds_to_inactivate = a
-            if verbose: print 'set bonds_to_inactivate to ', a
+            if verbose: print ('set bonds_to_inactivate to ', a)
         if o in ('-Z', '--Z'):
             inactivate_all_torsions = True
-            if verbose: print 'set inactivate_all_torsions to ', inactivate_all_torsions
+            if verbose: print ('set inactivate_all_torsions to ', inactivate_all_torsions)
         if o in ('-h', '--'):
             usage()
             sys.exit()
 
 
     if not  ligand_filename:
-        print 'prepare_ligand: ligand filename must be specified.'
+        print ('prepare_ligand: ligand filename must be specified.')
         usage()
         sys.exit()
 
     #what about nucleic acids???
 
     mols = Read(ligand_filename)
-    if verbose: print 'read ', ligand_filename
+    if verbose: print ('read ', ligand_filename)
     mol = mols[0]
     if len(mols)>1:
         if verbose: 
-            print "more than one molecule in file"
+            print ("more than one molecule in file")
         #use the one molecule with the most atoms
         ctr = 1
         for m in mols[1:]:
@@ -166,7 +166,7 @@ if __name__ == '__main__':
             if len(m.allAtoms)>len(mol.allAtoms):
                 mol = m
                 if verbose:
-                    print "mol set to ", ctr, "th molecule with", len(mol.allAtoms), "atoms"
+                    print ("mol set to ", ctr, "th molecule with", len(mol.allAtoms), "atoms")
 
     #possible clean-up???
     mol.buildBondsByDistance()
@@ -183,10 +183,10 @@ if __name__ == '__main__':
 
 
     if verbose:
-        print "setting up LPO with mode=", mode,
-        print "and outputfilename= ", outputfilename
-        print "and check_for_fragments=", check_for_fragments
-        print "and bonds_to_inactivate=", bonds_to_inactivate
+        print ("setting up LPO with mode=", mode,)
+        print ("and outputfilename= ", outputfilename)
+        print ("and check_for_fragments=", check_for_fragments)
+        print ("and bonds_to_inactivate=", bonds_to_inactivate)
     LPO = LigandPreparation(mol, mode, repairs, charges_to_add, 
                             cleanup, allowed_bonds, root, 
                             outputfilename=outputfilename,
